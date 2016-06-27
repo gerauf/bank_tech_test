@@ -7,6 +7,7 @@ require 'account_history'
 describe "interacting with bank" do
   it 'is expected to show a statement of all interactions' do
     formated_statement = "date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00\n13/01/2012 || 2000.00 || || 3000.00\n10/01/2012 || 1000.00 || || 1000.00"
+    # think about string formating
     bank = Bank.new
     bank.deposit 1000, Time.new(2012, 01, 10)
     bank.deposit 2000, Time.new(2012, 01, 13)

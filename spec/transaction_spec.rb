@@ -2,7 +2,8 @@ require 'transaction'
 
 describe Transaction do
 
-  subject(:transaction) {described_class.new 100, 100}
+  let(:date)              {Time.new(2012, 10, 10)}
+  subject(:transaction)   {described_class.new 100, 100, date}
 
   it 'has an amount' do
     expect(transaction.amount).to eq 100
@@ -13,7 +14,7 @@ describe Transaction do
   end
 
   it 'saves the creation time' do
-    expect(transaction.date).to be_a(Time)
+    expect(transaction.date).to eq date
   end
 
 end

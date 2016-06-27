@@ -2,9 +2,9 @@ require 'bank'
 
 describe Bank do
 
-  let(:account) {double :account, show_balance: 0}
+  let(:account)   {double :account, show_balance: 0}
   let(:statement) {double :statement}
-  subject(:bank) {Bank.new account, statement}
+  subject(:bank)  {Bank.new account, statement}
 
   describe '#deposit' do
     it 'makes a positive transaction' do

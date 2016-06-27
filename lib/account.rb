@@ -8,7 +8,7 @@ class Account
     @history.show
   end
 
-  def new_transaction amount, date = Time.new
+  def new_transaction amount, date
     @history.add amount, date
   end
 

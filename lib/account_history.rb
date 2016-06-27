@@ -1,7 +1,7 @@
 class AccountHistory
 
-  def initialize transaction_klass = Transaction
-    @transaction_factory = transaction_klass
+  def initialize transaction = Transaction
+    @transaction = transaction
     @log = []
   end
 
@@ -11,7 +11,8 @@ class AccountHistory
 
   def add amount, date = Time.new
     balance = @log.empty? ? 0 : @log.last.current_balance
-    @log << @transaction_factory.new(amount, balance + amount, date)
+    # code smell...
+    @log << @transaction.new(amount, balance + amount, date)
   end
 
 end

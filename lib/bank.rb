@@ -1,7 +1,5 @@
 class Bank
 
-  # banks responsibility is to be an interface for customers
-
   def initialize(account = Account.new, statement = Statement.new)
     @account = account
     @statement = statement

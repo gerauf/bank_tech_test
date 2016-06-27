@@ -2,10 +2,11 @@ require 'account_history'
 
 describe AccountHistory do
 
-  let(:transaction) {double :transaction, current_balance: 1}
-  let(:transaction_klass) { double :transaction_klass, new: transaction}
+  let(:date)              {Time.new(2012, 10, 10)}
+  let(:transaction)       {double :transaction, current_balance: 1}
+  let(:transaction_klass) {double :transaction_klass, new: transaction}
+
   subject(:account_history) {described_class.new transaction_klass}
-  let(:date) {Time.new(2012, 10, 10)}
 
   describe "#show" do
     it 'starts empty' do

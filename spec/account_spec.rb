@@ -2,9 +2,9 @@ require 'account'
 
 describe Account do
 
-  let(:date) {Time.new(2012, 01, 10)}
+  let(:date)            {Time.new(2012, 01, 10)}
   let(:account_history) {double :account_history}
-  subject(:account) {Account.new account_history}
+  subject(:account)     {Account.new account_history}
 
   describe '#get_history' do
     it 'calls the account history show method' do
