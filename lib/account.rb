@@ -10,9 +10,9 @@ class Account
     @history
   end
 
-  def new_transaction amount
+  def new_transaction amount, time = Time.new
     @balance += amount
-    @history << @transaction_factory.new(amount, @balance)
+    @history << @transaction_factory.new(amount, @balance, time)
   end
 
 end

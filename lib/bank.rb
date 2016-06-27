@@ -2,16 +2,21 @@ class Bank
 
   # banks responsibility is to be an interface for customers
 
-  def initialize(account = Account.new)
+  def initialize(account = Account.new, statement = Statement.new)
     @account = account
+    @statement = statement
   end
 
-  def deposit amount
-    @account.new_transaction(amount)
+  def deposit amount, time = Time.new
+    @account.new_transaction(amount, time)
   end
 
   def withdraw amount
-    @account.new_transaction(-amount)
+    @account.new_transaction(-amount, time)
+  end
+
+  def get_statement
+    @statement.show @account
   end
 
 end

@@ -12,8 +12,8 @@ describe Transaction do
     expect(transaction.current_balance).to eq 100
   end
 
-  it 'has a date' do
-    expect(transaction.date).to be_a(Date)
+  it 'saves the creation time' do
+    expect(transaction.date).to be_a(Time)
   end
 
 end
