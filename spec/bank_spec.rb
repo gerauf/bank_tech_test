@@ -24,10 +24,10 @@ describe Bank do
     end
   end
 
-  describe '#get_statement' do
+  describe '#print_statement' do
     it 'produces a statement' do
       expect(statement).to receive(:show).with(account)
-      bank.get_statement
+      bank.print_statement
     end
   end
 end

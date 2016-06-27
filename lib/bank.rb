@@ -15,7 +15,7 @@ class Bank
     @account.new_transaction(-amount, time)
   end
 
-  def get_statement
+  def print_statement
     @statement.show @account
   end
 

@@ -1,18 +1,15 @@
 class Account
 
-  def initialize transaction_klass = Transaction
-    @balance = 0
-    @history = []
-    @transaction_factory = transaction_klass
+  def initialize account_history = AccountHistory.new
+    @history = account_history
   end
 
   def get_history
-    @history
+    @history.show
   end
 
-  def new_transaction amount, time = Time.new
-    @balance += amount
-    @history << @transaction_factory.new(amount, @balance, time)
+  def new_transaction amount, date = Time.new
+    @history.add amount, date
   end
 
 end

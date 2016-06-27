@@ -2,6 +2,7 @@ require 'bank'
 require 'account'
 require 'transaction'
 require 'statement'
+require 'account_history'
 
 describe "interacting with bank" do
   it 'is expected to show a statement of all interactions' do
@@ -10,6 +11,6 @@ describe "interacting with bank" do
     bank.deposit 1000, Time.new(2012, 01, 10)
     bank.deposit 2000, Time.new(2012, 01, 13)
     bank.withdraw 500, Time.new(2012, 01, 14)
-    expect(bank.get_statement).to eq formated_statement
+    expect(bank.print_statement).to eq formated_statement
   end
 end
