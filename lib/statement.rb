@@ -1,7 +1,8 @@
 class Statement
 
+
   def show account
-    account.get_history.reverse.reduce(header) do |statement, transaction|
+    account.get_history.reverse.reduce(HEADER) do |statement, transaction|
       statement += "\n#{make_line transaction}"
     end
   end
@@ -9,9 +10,7 @@ class Statement
 
   private
 
-  def header
-    "date || credit || debit || balance"
-  end
+  HEADER = "date || credit || debit || balance"
 
   def make_line transaction
     date = date_format transaction.date
