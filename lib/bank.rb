@@ -6,16 +6,12 @@ class Bank
     @account = account
   end
 
-  def show_balance
-    @account.show_balance
-  end
-
   def deposit amount
-    @account.update_balance(amount)
+    @account.new_transaction(amount)
   end
 
   def withdraw amount
-    @account.update_balance(-amount)
+    @account.new_transaction(-amount)
   end
 
 end
