@@ -1,19 +1,21 @@
 class Bank
 
-  def initialize
-    @balance = 0
+  # banks responsibility is to be an interface for customers
+
+  def initialize(account = Account.new)
+    @account = account
   end
 
-  def currentBalance
-    @balance
+  def show_balance
+    @account.show_balance
   end
 
   def deposit amount
-    @balance += amount
+    @account.update_balance(amount)
   end
 
   def withdraw amount
-    @balance -= amount
+    @account.update_balance(-amount)
   end
 
 end

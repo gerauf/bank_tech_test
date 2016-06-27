@@ -2,28 +2,31 @@ require './lib/bank.rb'
 
 describe Bank do
 
-  subject(:bank) {Bank.new}
+  let(:account) {double :account, show_balance: 0}
+  subject(:bank) {Bank.new account}
 
-  describe '#currentBalance' do
+
+  describe '#show_balance' do
     it 'starts at 0' do
-      expect(bank.currentBalance).to eq 0
+      expect(bank.show_balance).to eq 0
     end
   end
 
   describe '#deposit' do
     it 'increases the customers balance' do
-      bank.deposit(1000)
-      expect(bank.currentBalance).to eq 1000
+      amount = 1000
+      expect(account).to receive(:update_balance).with(amount)
+      bank.deposit(amount)
     end
   end
 
   describe '#withdraw' do
     it 'reduces the customers balance' do
-      bank.withdraw(500)
-      expect(bank.currentBalance).to eq -500
+      amount = 1000
+      expect(account).to receive(:update_balance).with(-amount)
+      bank.withdraw(amount)
     end
   end
-
 
 
 
