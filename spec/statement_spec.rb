@@ -2,10 +2,10 @@ require 'statement'
 
 describe Statement do
 
-  let(:t1)            {double :transaction1, amount: 1000, date: Time.new(2012, 01, 10), balance: 1000}
-  let(:t2)            {double :transaction2, amount: 2000, date: Time.new(2012, 01, 13), balance: 3000}
-  let(:t3)            {double :transaction3, amount: -500, date: Time.new(2012, 01, 14), balance: 2500}
-  let(:account)       {double :account, history: [t1, t2, t3]}
+  let(:t1)            {double :transaction1, amount: 1000, date: Time.new(2012, 01, 10), current_balance: 1000}
+  let(:t2)            {double :transaction2, amount: 2000, date: Time.new(2012, 01, 13), current_balance: 3000}
+  let(:t3)            {double :transaction3, amount: -500, date: Time.new(2012, 01, 14), current_balance: 2500}
+  let(:account)       {double :account, get_history: [t1, t2, t3]}
   subject(:statement) {Statement.new}
 
   describe '#show' do

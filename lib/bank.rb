@@ -11,7 +11,7 @@ class Bank
     @account.new_transaction(amount, time)
   end
 
-  def withdraw amount
+  def withdraw amount, time = Time.new
     @account.new_transaction(-amount, time)
   end
 

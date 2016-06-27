@@ -2,7 +2,8 @@ require 'account'
 
 describe Account do
 
-  let(:transaction) {double :transaction, amount: 1, current_balance: 1}
+  let(:date) {Time.new(2012, 01, 10)}
+  let(:transaction) {double :transaction, amount: 1, current_balance: 1, date: date}
   let(:transaction_klass) {double :transaction_klass, new: transaction}
   subject(:account) {Account.new transaction_klass}
 
@@ -13,9 +14,9 @@ describe Account do
   end
 
   describe '#new_transaction' do
-    it 'creates a new transaction' do
-      expect(transaction_klass).to receive(:new).with(100, 100)
-      account.new_transaction 100
+    it 'creates a new transaction at a given date' do
+      expect(transaction_klass).to receive(:new).with(100, 100, date)
+      account.new_transaction 100, date
     end
 
     it 'each transaction gets stored in the history' do
@@ -25,8 +26,8 @@ describe Account do
 
     it 'balance is updated from previous transactions balance' do
       account.new_transaction 1
-      expect(transaction_klass).to receive(:new).with(1, 2)
-      account.new_transaction 1
+      expect(transaction_klass).to receive(:new).with(1, 2, date)
+      account.new_transaction 1, date
     end
   end
 
