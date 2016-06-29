@@ -1,33 +1,32 @@
 class Statement
 
 
-  def show account
-    account.get_history.reverse.reduce(HEADER) do |statement, transaction|
-      statement += "\n#{make_line transaction}"
-    end
+  def show(account)
+    balance = 0
+    account.get_history.map {|line| presenter(line, balance += line.amount) }
+      .reverse.reduce(HEADER){|statement,line| statement + "\n#{line}"}
   end
 
 
   private
-
   HEADER = "date || credit || debit || balance"
 
-  def make_line transaction
+  def presenter(transaction, balance)
     date = date_format transaction.date
     amount = credit_or_debit transaction.amount
-    balance = money_format transaction.current_balance
-    "#{date} || #{amount} || #{balance}"
+    "#{date} || #{amount} || #{money_format balance}"
   end
 
-  def credit_or_debit amount
+
+  def credit_or_debit(amount)
     amount > 0 ? "#{money_format amount} ||" : "|| #{money_format amount.abs()}"
   end
 
-  def money_format amount
+  def money_format(amount)
     format("%.2f", amount)
   end
 
-  def date_format date
+  def date_format(date)
     date.strftime "%d/%m/%Y"
   end
 
